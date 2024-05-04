@@ -10,12 +10,13 @@ import PasswordIcon from "./../../../public/icons/icon-password.png";
 import Link from "next/link";
 import IconShowEye from "./../../../public/icons/eye-show.png";
 import IconHiddenEye from "./../../../public/icons/eye-hide.png";
+import AccessComponent from "../AccessComponent";
 const SchemaLogin = z.object({
   email: z
     .string()
     .email("Email inválido!")
     .regex(
-      /@(discente\.edu.br|docente\.edu\.br)$/,
+      /@(discente\.ifpe.edu.br|docente\.ifpe.edu\.br)$/,
       "Você deve logar com o email institucional!"
     ),
   password: z.string().min(4, "Senha deve conter no mínimo 4 caracteres"),
@@ -33,9 +34,7 @@ const Login = () => {
 
   const handleSubmitForm = (data: any) => {};
   return (
-    <section className="p-11 bg-[#1e1e1e] lg:bg-[#1A1B1F] flex flex-col justify-center items-center gap-5 rounded-lg">
-      <Image src={Logo} alt="Logo"></Image>
-      <span className="mt-5 font-bold text-xl">Entrar</span>
+    <AccessComponent title="Acessar plataforma">
       <form
         className="flex flex-col gap-5 items-center"
         onSubmit={handleSubmit(handleSubmitForm)}
@@ -96,7 +95,7 @@ const Login = () => {
             )}
           </label>
           <span className="flex justify-end text-sm text-[#F2CE4E] underline cursor-pointer hover:opacity-80">
-            Esqueceu a senha?
+            <Link href={"/recovery_password"}> Esqueceu a senha?</Link>
           </span>
           {errors.password && (
             <p className="text-red-600 text-sm">
@@ -110,14 +109,14 @@ const Login = () => {
         <span className="mt-5 text-sm">
           Você não tem um cadastro?{" "}
           <Link
-            href={"/"}
+            href={"/register"}
             className="text-[#F2CE4E] underline hover:opacity-80"
           >
             Cadastre-se aqui
           </Link>
         </span>
       </form>
-    </section>
+    </AccessComponent>
   );
 };
 
