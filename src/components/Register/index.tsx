@@ -31,7 +31,7 @@ const Register = () => {
   };
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    <main className="flex min-h-screen flex-col items-center justify-between lg:p-24 p-0">
       <AccessComponent title="Cadastre-se">
         <form
           className="flex flex-col gap-5 items-center"
