@@ -8,7 +8,9 @@ import EmailIcon from "./../../../public/icons/icon-email.png";
 import NameIcon from "./../../../public/icons/name-icon.png";
 import PasswordIcon from "./../../../public/icons/icon-password.png";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 const Register = () => {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -24,6 +26,7 @@ const Register = () => {
   const handleFormSubmit = (data: any) => {
     if (email === confirmEmail && password === confirmPass) {
       alert(data.is_teacher);
+      router.push("/code_register");
     }
   };
 

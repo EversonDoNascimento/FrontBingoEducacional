@@ -95,7 +95,7 @@ const Login = () => {
             )}
           </label>
           <span className="flex justify-end text-sm text-[#F2CE4E] underline cursor-pointer hover:opacity-80">
-            Esqueceu a senha?
+            <Link href={"/recovery_password"}> Esqueceu a senha?</Link>
           </span>
           {errors.password && (
             <p className="text-red-600 text-sm">
