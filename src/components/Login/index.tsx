@@ -1,7 +1,6 @@
 "use client";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import Logo from "./../../../public/icons/icon-logo.png";
 import Image from "next/image";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -11,6 +10,7 @@ import Link from "next/link";
 import IconShowEye from "./../../../public/icons/eye-show.png";
 import IconHiddenEye from "./../../../public/icons/eye-hide.png";
 import AccessComponent from "../AccessComponent";
+import { useRouter } from "next/navigation";
 const SchemaLogin = z.object({
   email: z
     .string()
@@ -22,6 +22,7 @@ const SchemaLogin = z.object({
   password: z.string().min(4, "Senha deve conter no mínimo 4 caracteres"),
 });
 const Login = () => {
+  const router = useRouter();
   const [showPass, setShowPass] = useState({
     inputType: "password",
     show: false,
@@ -32,7 +33,9 @@ const Login = () => {
     formState: { errors },
   } = useForm({ resolver: zodResolver(SchemaLogin) });
 
-  const handleSubmitForm = (data: any) => {};
+  const handleSubmitForm = (data: any) => {
+    router.push("/home");
+  };
   return (
     <AccessComponent title="Acessar plataforma">
       <form
