@@ -9,7 +9,7 @@ import IconLogoutDeactivated from "./../../../public/icons//icon-logout-deactiva
 const Header = () => {
   return (
     <>
-      <header className="fixed w-screen py-2 lg:px-8 px-4 bg-[#1A1B1F] flex justify-between items-center">
+      <header className="z-50 fixed w-screen py-2 lg:px-8 px-4 bg-[#1A1B1F] flex justify-between items-center top-0">
         <Image src={Logo} alt="Logo bingo" width={50}></Image>
         <ul className="flex gap-5">
           <li className="text-[#F2CE4E] flex gap-2 items-center underline hover:scale-105 transition-all ease-linear duration-200 cursor-pointer">
