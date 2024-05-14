@@ -7,11 +7,13 @@ const EditPassword = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
-  const handlePasswordChange = (e) => {
+  const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value);
   };
 
-  const handleConfirmPasswordChange = (e) => {
+  const handleConfirmPasswordChange = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
     setConfirmPassword(e.target.value);
   };
 
@@ -47,9 +49,7 @@ const EditPassword = () => {
             bg-transparent flex border-[1px] px-4 py-2 rounded-lg lg:w-96 w-80 placeholder-white"
             onChange={handleConfirmPasswordChange}
           ></input>
-          {errorMessage && (
-            <p className="text-red-500">{errorMessage}</p>
-          )}
+          {errorMessage && <p className="text-red-500">{errorMessage}</p>}
         </div>
 
         <button
