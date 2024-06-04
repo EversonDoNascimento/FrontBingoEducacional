@@ -1,4 +1,4 @@
-import RecoveryPassword from "@/components/RecoveryPassword";
+import RecoveryPassword from "./../../components/RecoveryPassword";
 
 const Page = () => {
   return (

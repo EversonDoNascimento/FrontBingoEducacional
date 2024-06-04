@@ -31,7 +31,7 @@ const ContainerCodeGame = ({ sendData }: Props) => {
           {code.trim().length < 4 ? (
             <button
               disabled
-              className="bg-[#B6B6B6] text-black px-4 py-1 rounded-lg cursor-default"
+              className=" bg-[#B6B6B6] text-black px-4 py-1 rounded-lg cursor-not-allowed"
             >
               Entrar no jogo
             </button>

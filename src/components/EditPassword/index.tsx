@@ -30,8 +30,8 @@ const EditPassword = () => {
   return (
     <>
       <Header />
-      <main className="flex flex-col items-center lg:p-24 p-0">
-        <h1 className="text-4xl">Perfil</h1>
+      <main className="flex flex-col items-center lg:p-24 p-0 mt-20 lg:mt-0">
+        <h1 className="text-xl ">Perfil</h1>
         <div className="pt-10 space-y-4">
           <label className="bg-[#1A1B1F] w-[100%] outline-none">
             Editar senha:

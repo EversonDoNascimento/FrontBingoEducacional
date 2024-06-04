@@ -1,4 +1,4 @@
-import CodeRegister from "@/components/CodeRegister";
+import CodeRegister from "./../../components/CodeRegister";
 
 const Page = () => {
   return (
