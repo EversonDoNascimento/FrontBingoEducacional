@@ -31,7 +31,7 @@ const ContainerCodeGame = ({ sendData }: Props) => {
           {code.trim().length < 4 ? (
             <button
               disabled
-              className="bg-[#B6B6B6] text-black px-4 py-1 rounded-lg cursor-default"
+              className=" bg-[#B6B6B6] text-black px-4 py-1 rounded-lg cursor-not-allowed"
             >
               Entrar no jogo
             </button>
@@ -51,7 +51,7 @@ const ContainerCodeGame = ({ sendData }: Props) => {
       </section>
       <div>
         <Image
-          className="rounded-t-xl lg:rounded-r-xl lg:w-[35rem] md:w-[30rem] sm:w-[25rem] w-[20rem] "
+          className="rounded-t-xl lg:rounded-r-xl lg:rounded-tl-none lg:w-[35rem] md:w-[30rem] sm:w-[25rem] w-[20rem] "
           src={BgCodeGame}
           alt="Background game"
         ></Image>

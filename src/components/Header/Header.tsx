@@ -5,7 +5,8 @@ import IconProfileDeactivated from "./../../../public/icons/icon-profile-deactiv
 import IconProfileActivated from "./../../../public/icons/icon-profile-activated.png";
 import IconLogoutActivated from "./../../../public/icons/logout-icon-activated.png";
 import IconLogoutDeactivated from "./../../../public/icons//icon-logout-deactivated.png";
-
+import IconHomeActivated from "./../../../public/icons/icon-home.png";
+import IconHomeDeactivated from "./../../../public/icons/icon-home-deactivated.png";
 const Header = () => {
   return (
     <>
@@ -26,6 +27,14 @@ const Header = () => {
           <li className="flex justify-center items-center">
             <Menu
               data={[
+                {
+                  icon: {
+                    deactivated: IconHomeDeactivated,
+                    activated: IconHomeActivated,
+                  },
+                  name: "Tela inicial",
+                  link: "/home",
+                },
                 {
                   icon: {
                     deactivated: IconProfileDeactivated,

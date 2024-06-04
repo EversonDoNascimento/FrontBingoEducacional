@@ -1,3 +1,4 @@
+import Link from "next/link";
 import CardGame from "../CardGame";
 import ContainerCodeGame from "../ContainerCodeGame";
 const jogos = [
@@ -78,15 +79,17 @@ const Home = () => {
       </div>
       <div className="mt-11">
         <button className="bg-[#3D4EFB] flex gap-2 px-4 py-2 hover:scale-105 transition-all ease-linear duration-200 rounded-md">
-          <div>
-            <div className="border-2 border-white rounded-full w-6 h-6 flex justify-center items-center">
-              <div className="absolute">
-                <div className="border-b-2 border-white w-3 relative"></div>
-                <div className="border-b-2 border-white w-3 relative rotate-90 bottom-[1.5px]"></div>
+          <Link className="flex gap-2" href={"/create_game"}>
+            <div>
+              <div className="border-2 border-white rounded-full w-6 h-6 flex justify-center items-center">
+                <div className="absolute">
+                  <div className="border-b-2 border-white w-3 relative"></div>
+                  <div className="border-b-2 border-white w-3 relative rotate-90 bottom-[1.5px]"></div>
+                </div>
               </div>
             </div>
-          </div>
-          Criar um jogo
+            Criar um jogo
+          </Link>
         </button>
       </div>
     </main>
