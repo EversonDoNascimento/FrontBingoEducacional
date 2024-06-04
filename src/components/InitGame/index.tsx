@@ -7,7 +7,7 @@ const InitGame = () => {
   return (
     <>
       <Header />
-      <main className="flex flex-col items-center lg:p-24 p-0  space-y-4">
+      <main className="flex flex-col items-center lg:p-8 p-0  space-y-4">
         <h1 className="text-4xl">Jogo</h1>
 
         <div className="bg-[#1A1B1F] w-[400px] h-[370px] border rounded-lg border-transparent">
