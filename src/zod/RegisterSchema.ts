@@ -7,14 +7,14 @@ const RegisterSchema = z.object({
     .string()
     .email("Email inválido!")
     .regex(
-      /@(discente\.ifpe.edu.br|docente\.ifpe.edu\.br)$/,
+      /@(docente\.ifpe.edu\.br)$/,
       "Você deve logar com o email institucional!"
     ),
   confirm_email: z
     .string()
     .email("Email inválido!")
     .regex(
-      /@(discente\.ifpe.edu.br|docente\.ifpe.edu\.br)$/,
+      /@(docente\.ifpe.edu\.br)$/,
       "Você deve logar com o email institucional!"
     ),
   password: z.string().min(4, "Senha deve conter no mínimo 4 caracteres!"),
