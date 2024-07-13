@@ -37,7 +37,7 @@ const Register = () => {
           className="flex flex-col gap-5 items-center"
           onSubmit={handleSubmit(handleFormSubmit)}
         >
-          <div>
+          {/* <div>
             <label>
               Você é professor ou aluno?
               <div className="flex px-4 py-2 rounded-lg lg:w-96 w-80 gap-5">
@@ -64,7 +64,7 @@ const Register = () => {
                 <p className="text-red-600 text-sm">Selecione uma opção!</p>
               )}
             </label>
-          </div>
+          </div> */}
           <div>
             <label className="flex border-[1px] px-4 py-2 rounded-lg lg:w-96 w-80">
               <Image src={NameIcon} alt="Ícone do usuário"></Image>

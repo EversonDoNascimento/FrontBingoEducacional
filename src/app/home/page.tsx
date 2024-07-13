@@ -1,14 +1,16 @@
 "use client";
+import PrivateRoutes from "@/components/PrivateRoutes/PrivateRoutes";
 import Header from "../../components/Header/Header";
 import Home from "./../../components/Home";
 
 const Page = () => {
   return (
-    <>
-      <Header></Header>
-
-      <Home></Home>
-    </>
+    <PrivateRoutes>
+      <>
+        <Header></Header>
+        <Home></Home>
+      </>
+    </PrivateRoutes>
   );
 };
 

@@ -2,6 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
+@keyframes animationErrorWindow {
+  0% {
+    opacity: 0;
+    scale: 0.5;
+  }
+  15% {
+    opacity: 1;
+    scale: 1;
+  }
+  85% {
+    opacity: 1;
+    scale: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
 body {
   color: #fff;
   background: #1e1e1e;
@@ -11,4 +29,20 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+.WindowError {
+  background-color: #d41c2e;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  color: white;
+  padding: 15px 10px;
+  animation-name: animationErrorWindow;
+  animation-duration: 3s;
+  opacity: 0;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+  width: 17rem;
 }
