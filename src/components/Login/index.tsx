@@ -13,13 +13,11 @@ import AccessComponent from "../AccessComponent";
 import { useRouter } from "next/navigation";
 import { AuthContext } from "@/Context/auth";
 const SchemaLogin = z.object({
-  email: z
-    .string()
-    .email("Email inválido!")
-    .regex(
-      /@(discente\.ifpe.edu.br|docente\.ifpe.edu\.br)$/,
-      "Você deve logar com o email institucional!"
-    ),
+  email: z.string().email("Email inválido!"),
+  // .regex(
+  //   /@(discente\.ifpe.edu.br|docente\.ifpe.edu\.br)$/,
+  //   "Você deve logar com o email institucional!"
+  // ),
   password: z.string().min(4, "Senha deve conter no mínimo 4 caracteres"),
 });
 const Login = () => {

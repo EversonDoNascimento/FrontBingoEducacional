@@ -29,6 +29,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     setLoading(true);
     const { data, status } = await login({ email, password });
     if (status === 200) {
+      localStorage.setItem("token", data.access_token);
       setLoading(false);
       router.push("/home");
     } else {
