@@ -59,7 +59,11 @@ const CreateGame = () => {
   }, [questionsRegisted]);
   useEffect(() => {
     const local = localStorage.getItem("questionStorage");
-    setQuestionsRegistered(JSON.parse(local as string));
+    if (local) {
+      if (local.length > 0) {
+        setQuestionsRegistered(JSON.parse(local as string));
+      }
+    }
   }, []);
   return (
     <main className="flex flex-col justify-center items-center mt-24 mb-20">
