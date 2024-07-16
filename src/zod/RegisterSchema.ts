@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 const RegisterSchema = z.object({
-  is_teacher: z.enum(["0", "1"]),
+  // is_teacher: z.enum(["0", "1"]),
   name: z.string().min(9, "Digite seu nome completo!"),
   email: z.string().email("Email inválido!"),
   // .regex(
