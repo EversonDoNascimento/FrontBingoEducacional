@@ -7,10 +7,6 @@ export type UserType = {
 };
 
 export const registerUser = async (data: UserType) => {
-  console.log({
-    ...data,
-    role: "ADMIN",
-  });
   try {
     const response = await api.post(`/users/saveUser`, {
       ...data,

@@ -13,6 +13,7 @@ import { registerCode, registerUser, UserType } from "./../../api/register";
 import { useEffect, useState } from "react";
 import Loading from "../Loading/Loading";
 import { bodyEmail } from "@/api/bodyEmail";
+import StatusWindow from "../StatusWindow/StatusWindow";
 const Register = () => {
   const router = useRouter();
   const {
@@ -27,6 +28,14 @@ const Register = () => {
   const confirmPass = watch("confirm_password") as string;
   const password = watch("password") as string;
   const isTeacher = watch("is_teacher");
+  const [errorMessage, setErrorMessage] = useState({
+    show: false,
+    message: "",
+  });
+  const [successMessage, setSuccessMessage] = useState({
+    show: false,
+    message: "",
+  });
   const handleRegisterUser = async (user: UserType) => {
     setLoading(true);
     const { status, data } = await registerUser(user);
@@ -47,20 +56,32 @@ const Register = () => {
           }),
         });
         if (response.ok) {
-          router.push("/code_register");
+          setSuccessMessage({
+            show: true,
+            message: "Verifique seu email, e confirme o código!",
+          });
+          setTimeout(
+            () => setSuccessMessage({ show: false, message: "" }),
+            3000
+          );
+          setTimeout(() => router.push("/code_register"), 3000);
         } else {
-          alert("Error ao enviar email");
+          setErrorMessage({ show: true, message: "Erro ao enviar email!" });
+          setTimeout(() => {
+            setErrorMessage({ show: false, message: "" });
+          }, 3000);
         }
       } else {
-        alert("Error ao salvar código");
+        setErrorMessage({ show: true, message: codeRegister.data.message });
+        setTimeout(() => {
+          setErrorMessage({ show: false, message: "" });
+        }, 3000);
       }
-
-      // const sendEmail = await SendEmail({
-      //   code_register: code,
-      //   to: user.email,
-      // });
     } else {
-      alert("Error ao registrar usuário");
+      setErrorMessage({ show: true, message: data.message });
+      setTimeout(() => {
+        setErrorMessage({ show: false, message: "" });
+      }, 3000);
     }
     setLoading(false);
   };
@@ -80,14 +101,28 @@ const Register = () => {
     return date.getTime() + "" + randon;
   };
 
-  //1721074196755716
-  useEffect(() => {}, []);
   return (
     <>
       {loading ? (
         <Loading></Loading>
       ) : (
         <>
+          {successMessage.show ? (
+            <>
+              <StatusWindow
+                error={false}
+                text={successMessage.message}
+              ></StatusWindow>
+            </>
+          ) : null}
+          {errorMessage.show ? (
+            <>
+              <StatusWindow
+                error={false}
+                text={errorMessage.message}
+              ></StatusWindow>
+            </>
+          ) : null}
           <main className="flex min-h-screen flex-col items-center justify-between lg:p-24 p-0">
             <AccessComponent title="Cadastre-se">
               <form

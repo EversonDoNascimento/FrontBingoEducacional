@@ -6,17 +6,19 @@ import { z } from "zod";
 import Image from "next/image";
 import IconCode from "./../../../public/icons/icon-code.png";
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { activateAccount } from "@/api/register";
+import { activateAccount } from "./../../api/register";
 import EmailIcon from "./../../../public/icons/icon-email.png";
 import Loading from "../Loading/Loading";
+import StatusWindow from "../StatusWindow/StatusWindow";
 
 const codeRegisterType = z.object({
   email: z.string().email("Digite um email válido!"),
   code: z.string().min(4, "Digite o código!"),
 });
 const CodeRegister = () => {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -27,6 +29,14 @@ const CodeRegister = () => {
   const code = params.get("code");
   const email = params.get("email");
   const [loading, setLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState({
+    show: false,
+    message: "",
+  });
+  const [successMessage, setsuccessMessage] = useState({
+    show: false,
+    message: "",
+  });
   const handleActiveAccount = async () => {
     setLoading(true);
     const { data, status } = await activateAccount(
@@ -34,9 +44,18 @@ const CodeRegister = () => {
       email as string
     );
     if (status === 200) {
-      alert("Ativado com sucesso!");
+      setsuccessMessage({ show: true, message: data.message });
+      setTimeout(() => {
+        setsuccessMessage({ show: false, message: "" });
+      }, 3000);
+      setTimeout(() => {
+        router.push("/");
+      }, 3000);
     } else {
-      alert("Erro ao ativar!");
+      setErrorMessage({ show: true, message: data.message });
+      setTimeout(() => {
+        setErrorMessage({ show: false, message: "" });
+      }, 3000);
     }
     setLoading(false);
   };
@@ -55,6 +74,18 @@ const CodeRegister = () => {
         <Loading></Loading>
       ) : (
         <>
+          {successMessage.show ? (
+            <StatusWindow
+              error={false}
+              text={successMessage.message}
+            ></StatusWindow>
+          ) : null}
+          {errorMessage.show ? (
+            <StatusWindow
+              error={true}
+              text={errorMessage.message}
+            ></StatusWindow>
+          ) : null}
           <main className="flex min-h-screen flex-col items-center justify-between p-24">
             <AccessComponent title="Código de confirmação">
               <form
@@ -77,7 +108,7 @@ const CodeRegister = () => {
                   )}
                 </div>
                 <div className="lg:w-96 w-80">
-                  <p className="mb-3">
+                  <p className="mb-3 text-center">
                     Enviamos um código para o seu email. Digite-o logo abaixo, e
                     confirme seu cadastro:
                   </p>

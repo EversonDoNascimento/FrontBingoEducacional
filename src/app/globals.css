@@ -46,3 +46,19 @@ body {
   border-radius: 15px;
   width: 17rem;
 }
+
+.WindowSuccess {
+  background-color: #00b63a;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  color: white;
+  padding: 15px 10px;
+  animation-name: animationErrorWindow;
+  animation-duration: 3s;
+  opacity: 0;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+  width: 17rem;
+}

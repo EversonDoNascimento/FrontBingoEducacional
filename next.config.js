@@ -12,6 +12,8 @@ module.exports = {
     FROM_EMAIL: process.env.FROM_EMAIL,
     EMAIL_HOST: process.env.EMAIL_HOST,
     EMAIL_PORT: process.env.EMAIL_PORT,
+    GMAIL_EMAIL: process.env.GMAIL_EMAIL,
+    GMAIL_PASS: process.env.GMAIL_PASS,
   },
   images: {
     domains: ["localhost"],

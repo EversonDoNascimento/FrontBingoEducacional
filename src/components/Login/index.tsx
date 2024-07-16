@@ -23,7 +23,6 @@ const SchemaLogin = z.object({
 const Login = () => {
   const contextLogin = useContext(AuthContext);
 
-  const router = useRouter();
   const [showPass, setShowPass] = useState({
     inputType: "password",
     show: false,
