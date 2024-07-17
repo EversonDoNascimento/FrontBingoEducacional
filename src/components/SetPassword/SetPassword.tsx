@@ -2,27 +2,20 @@
 import { useForm } from "react-hook-form";
 import AccessComponent from "../AccessComponent";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
+import IconPass from "./../../../public/icons/icon-password.png";
 import Image from "next/image";
-import EmailIcon from "./../../../public/icons/icon-email.png";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Loading from "../Loading/Loading";
-import { recoveryPass } from "@/api/recoveyPass";
 import StatusWindow from "../StatusWindow/StatusWindow";
-import { recoveryPassBody } from "./../../api/bodyEmail";
-import { useRouter } from "next/navigation";
-const recoveryType = z.object({
-  email: z
-    .string()
-    .email("Email inválido!")
-    .regex(
-      /@(discente\.ifpe.edu.br|docente\.ifpe.edu\.br)$/,
-      "Você deve logar com o email institucional!"
-    ),
-});
-const RecoveryPassword = () => {
+import SetPasswordSchema from "@/zod/SetPasswordSchema";
+import { useSearchParams, useRouter } from "next/navigation";
+import { setPassword } from "@/api/recoveyPass";
+const SetPassword = () => {
+  const params = useSearchParams();
   const router = useRouter();
+  const code = params.get("code");
+  const email = params.get("email");
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState({
     show: false,
@@ -36,45 +29,49 @@ const RecoveryPassword = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({ resolver: zodResolver(recoveryType) });
-  const handleRecoveyPass = async (email: string) => {
+  } = useForm({ resolver: zodResolver(SetPasswordSchema) });
+  const handleSetPass = async (password: string) => {
     setLoading(true);
-    const code = generateCode();
-    const { status, data } = await recoveryPass({ code: code, email: email });
-    if (status === 200) {
-      const body = recoveryPassBody({ code: code, email: email });
-      const response = await fetch("/api/sendEmail", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          to: email,
-          subject: "Recupere sua senha Bingo Educacional",
-          text: body,
-        }),
-      });
-      if (response.ok) {
-        setSuccessMessage({ show: true, message: "Verifique seu email!" });
-        setTimeout(() => setSuccessMessage({ show: false, message: "" }), 3000);
-      } else {
-        setErrorMessage({ show: true, message: "Erro ao enviar email!" });
-        setTimeout(() => setErrorMessage({ show: false, message: "" }), 3000);
+    if (code && email) {
+      const { status, data } = await setPassword({ code, email, password });
+      if (status === 200) {
+        setSuccessMessage({
+          show: true,
+          message: data.message,
+        });
+        setTimeout(() => {
+          setSuccessMessage({ show: false, message: "" });
+        }, 3000);
+        setTimeout(() => {
+          router.push("/");
+        }, 3000);
       }
-    } else {
-      setErrorMessage({ show: true, message: data.message });
-      setTimeout(() => setErrorMessage({ show: false, message: "" }), 3000);
     }
+
     setLoading(false);
   };
-  const generateCode = () => {
-    const date = new Date();
-    const randon = Math.floor(Math.random() * 1000);
-    return date.getTime() + "" + randon;
-  };
+
   const handleSubmitForm = (data: any) => {
-    handleRecoveyPass(data.email);
+    handleSetPass(data.password);
   };
+
+  useEffect(() => {
+    if (code === null && email === null) {
+      setErrorMessage({
+        show: true,
+        message: "Código e/ou email não encontrados",
+      });
+      setTimeout(() => {
+        setErrorMessage({
+          show: false,
+          message: "",
+        });
+      }, 3000);
+      setTimeout(() => {
+        router.push("recovery_password");
+      }, 3000);
+    }
+  }, []);
   return (
     <>
       {loading ? (
@@ -99,26 +96,23 @@ const RecoveryPassword = () => {
                 className="flex flex-col gap-5 items-center"
                 onSubmit={handleSubmit(handleSubmitForm)}
               >
-                <p className="mb-3 w-96 text-center">
-                  Enviaremos um email com instruções para recuperar sua senha
-                </p>
                 <div>
                   <label className="flex border-[1px] px-4 py-2 rounded-lg lg:w-96 w-80">
-                    <Image src={EmailIcon} alt="Ícone de email"></Image>
+                    <Image src={IconPass} alt="Ícone de senha"></Image>
                     <input
-                      placeholder="Digite o seu email de acesso"
-                      {...register("email")}
+                      placeholder="Digite sua nova senha"
+                      {...register("password")}
                       className="bg-[#1A1B1F] ml-2 w-[100%] outline-none"
                     ></input>
                   </label>
-                  {errors.email && (
+                  {errors.password && (
                     <p className="text-red-600 text-sm">
-                      {errors.email.message as string}
+                      {errors.password.message as string}
                     </p>
                   )}
                 </div>
                 <button className="mt-5 text-center  rounded-lg px-4 py-2 bg-[#3D4EFB] hover:scale-105 transition-all ease-linear duration-200">
-                  Enviar email
+                  Salvar senha{" "}
                 </button>
                 <span className="mt-5 text-sm">
                   Você já tem um cadastro?{" "}
@@ -138,4 +132,4 @@ const RecoveryPassword = () => {
   );
 };
 
-export default RecoveryPassword;
+export default SetPassword;

@@ -10,9 +10,9 @@ import PasswordIcon from "./../../../public/icons/icon-password.png";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { registerCode, registerUser, UserType } from "./../../api/register";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Loading from "../Loading/Loading";
-import { bodyEmail } from "@/api/bodyEmail";
+import { bodyEmail } from "./../../api/bodyEmail";
 import StatusWindow from "../StatusWindow/StatusWindow";
 const Register = () => {
   const router = useRouter();

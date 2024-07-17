@@ -21,7 +21,7 @@ export const bodyEmail = ({ code, email }: { code: string; email: string }) => {
         <p style="font-size: 1rem; margin: 45px 0; font-weight: bold;">
           Por favor, clique no botão logo abaixo para ativar sua conta.
         </p>
-        <a href="http://localhost:3000/code_register?code=${code}&email=${email}"
+        <a href="${document.location.origin}/code_register?code=${code}&email=${email}"
           style="display: inline-block; padding: 10px 15px; border-radius: 15px; border: none; background-color: #3d4efb; color: white; font-weight: bold; text-decoration: none;">
           Clique aqui para ativar
         </a>
@@ -31,4 +31,59 @@ export const bodyEmail = ({ code, email }: { code: string; email: string }) => {
     </html>
 
 `;
+};
+
+export const recoveryPassBody = ({
+  code,
+  email,
+}: {
+  code: string;
+  email: string;
+}) => {
+  return `
+  <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Recovery Pass</title>
+  </head>
+  <body
+    style="
+      font-family: 'Courier New', Courier, monospace;
+      text-align: center;
+      margin: 10px 0;
+      width: 100%;
+    "
+  >
+    <header>
+      <h1 style="font-size: 1.5rem; margin: 0">
+        Recuperação de senha Bingo educacional
+      </h1>
+    </header>
+
+    <main>
+      <p style="font-size: 1rem; margin: 45px 0; font-weight: bold">
+        Por favor, clique no botão logo abaixo para recuperar sua senha.
+      </p>
+      <a
+        href="${document.location.origin}/set_password?code=${code}&email=${email}"
+        style="
+          display: inline-block;
+          padding: 10px 15px;
+          border-radius: 15px;
+          border: none;
+          background-color: #3d4efb;
+          color: white;
+          font-weight: bold;
+          text-decoration: none;
+        "
+      >
+        Recuperar senha
+      </a>
+    </main>
+  </body>
+</html>
+
+  `;
 };
