@@ -33,7 +33,7 @@ const CreateCategory = ({ sendClose }: Props) => {
   const handleRegisterCategory = async (name: string) => {
     setLoading(true);
     const token = localStorage.getItem("token") as string;
-    const { status, data } = await registerCategory(token, name);
+    const { status } = await registerCategory(token, name);
     if (status === 201) {
       setMessageSuccess({
         show: true,

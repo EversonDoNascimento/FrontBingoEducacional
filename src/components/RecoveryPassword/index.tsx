@@ -96,6 +96,7 @@ const RecoveryPassword = () => {
           <main className="flex min-h-screen flex-col items-center justify-between p-24">
             <AccessComponent title="Recuperação de senha">
               <form
+                autoComplete="off"
                 className="flex flex-col gap-5 items-center"
                 onSubmit={handleSubmit(handleSubmitForm)}
               >

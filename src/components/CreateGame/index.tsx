@@ -9,9 +9,12 @@ import { getAllCategories } from "@/api/categories";
 import Loading from "../Loading/Loading";
 import StatusWindow from "../StatusWindow/StatusWindow";
 import CreateCategory from "../CreateCategory/CreateCategory";
-
+import SelectQuestions from "../SelectQuestions/SelectQuestions";
+import IconRecoveryQuestion from "./../../../public/icons/icon-recovery-question.png";
+import Image from "next/image";
 const CreateGame = () => {
   const [loading, setLoading] = useState(false);
+  const [recoverQuestion, setRecoverQuestion] = useState(false);
   const [showCreateCaregory, setShowCreateCategory] = useState(false);
   const [messageError, setMessageError] = useState({
     show: false,
@@ -83,6 +86,17 @@ const CreateGame = () => {
         <Loading></Loading>
       ) : (
         <>
+          {recoverQuestion ? (
+            <SelectQuestions
+              sendIdQuestions={(questionsSelected) => {
+                console.log(questionsSelected);
+              }}
+              sendClose={() => {
+                setRecoverQuestion(false);
+              }}
+            ></SelectQuestions>
+          ) : null}
+
           {showCreateCaregory ? (
             <CreateCategory
               sendClose={() => {
@@ -206,8 +220,23 @@ const CreateGame = () => {
                   <h2 className="text-center font-bold mt-8 lg:mt-0">
                     Questões cadastradas
                   </h2>
+                  <button
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setRecoverQuestion(true);
+                    }}
+                    className="mt-4 transitioon-all ease-linear duration-200 hover:scale-105 bg-[#36A873] rounded-md text-sm flex gap-1 text-white px-2 py-1 justify-center items-center"
+                  >
+                    <Image
+                      src={IconRecoveryQuestion}
+                      width={16}
+                      alt="Ícone recuperar questão do banco"
+                      className="hidden md:block"
+                    ></Image>
+                    Recuperar questão do banco
+                  </button>
                   {questionsRegisted?.length > 0 ? (
-                    <div className="flex flex-col gap-2 mt-4 overflow-y-scroll h-[30rem]">
+                    <div className="flex flex-col gap-2 mt-4 overflow-y-scroll h-[28rem] px-2">
                       {questionsRegisted.map(
                         (
                           question: z.infer<typeof SchemaAddQuestions>,

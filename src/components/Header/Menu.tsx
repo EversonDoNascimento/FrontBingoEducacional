@@ -49,6 +49,10 @@ const Menu = ({ data }: Props) => {
           ) => {
             return (
               <li
+                onClick={() => {
+                  if (window !== undefined && item.link === "/")
+                    localStorage.clear();
+                }}
                 onMouseEnter={() => {
                   setIconDeactivated(index);
                 }}
