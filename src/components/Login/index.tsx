@@ -39,6 +39,7 @@ const Login = () => {
   return (
     <AccessComponent title="Acessar plataforma">
       <form
+        autoComplete="off"
         className="flex flex-col gap-5 items-center"
         onSubmit={handleSubmit(handleSubmitForm)}
       >

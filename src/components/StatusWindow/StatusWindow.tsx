@@ -17,7 +17,7 @@ const StatusWindow = ({ text, error }: Props) => {
           height: "100%",
           width: "100%",
         }}
-        className="fixed bg-black/50"
+        className="z-50 top-0 right-0 fixed bg-black/50"
       >
         {error ? (
           <div className="WindowError text-center">

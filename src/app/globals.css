@@ -62,3 +62,19 @@ body {
   border-radius: 15px;
   width: 17rem;
 }
+/* Customize scrollbar */
+::-webkit-scrollbar {
+  width: 4px; /* Largura da barra de rolagem */
+}
+
+::-webkit-scrollbar-track {
+  background: #1e1e1e; /* Cor do fundo da barra de rolagem */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #f2ce4e; /* Cor do polegar da barra de rolagem */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Cor do polegar ao passar o mouse */
+}
