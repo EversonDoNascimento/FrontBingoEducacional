@@ -6,11 +6,23 @@ import { getQuestionsByIdCategory } from "@/api/questions";
 import CardRegisteredQuestion from "../CardRegistedQuestion";
 
 type Props = {
+  loadQuestions?: {
+    id: string;
+    question: string;
+    answer: string;
+    category: string;
+  }[];
   sendClose: () => void;
-  sendIdQuestions: (array: { id: string }[]) => void;
+  sendIdQuestions: (
+    array: { id: string; question: string; answer: string; category: string }[]
+  ) => void;
 };
 
-const SelectQuestions = ({ sendClose, sendIdQuestions }: Props) => {
+const SelectQuestions = ({
+  sendClose,
+  sendIdQuestions,
+  loadQuestions,
+}: Props) => {
   const [loading, setLoading] = useState(false);
   const [messageSuccess, setMessageSuccess] = useState({
     show: false,
@@ -28,9 +40,9 @@ const SelectQuestions = ({ sendClose, sendIdQuestions }: Props) => {
   const [questions, setQuestions] = useState<
     { id: string; question: string; answer: string }[]
   >([]);
-  const [questionsSelected, setQuestionsSelected] = useState<{ id: string }[]>(
-    []
-  );
+  const [questionsSelected, setQuestionsSelected] = useState<
+    { id: string; question: string; answer: string; category: string }[]
+  >([]);
   const handleGetQuestionsByCategory = async () => {
     setLoading(true);
     if (selectedCategory === "default" || selectedCategory === "") return null;
@@ -62,6 +74,8 @@ const SelectQuestions = ({ sendClose, sendIdQuestions }: Props) => {
   };
   useEffect(() => {
     handleGetCategories();
+    if (loadQuestions)
+      if (loadQuestions.length > 0) setQuestionsSelected(loadQuestions);
   }, []);
   useEffect(() => {
     if (selectedCategory !== "default") handleGetQuestionsByCategory();
@@ -70,6 +84,11 @@ const SelectQuestions = ({ sendClose, sendIdQuestions }: Props) => {
     const find = questionsSelected.find((question) => question.id === id);
     if (find) return true;
     return false;
+  };
+  const findNameCategoryById = (id: number): string => {
+    const find = categories.find((category) => category.id === id);
+    if (find) return find.name;
+    return "";
   };
   return (
     <div className="fixed z-50 bg-black/50 top-0 right-0 w-full h-full flex justify-center items-center">
@@ -156,7 +175,12 @@ const SelectQuestions = ({ sendClose, sendIdQuestions }: Props) => {
                         }
                         setQuestionsSelected((prev) => [
                           ...prev,
-                          { id: question.id },
+                          {
+                            id: question.id,
+                            question: question.question,
+                            answer: question.answer,
+                            category: selectedCategory,
+                          },
                         ]);
                       }}
                       data={{

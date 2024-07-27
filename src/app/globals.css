@@ -62,6 +62,35 @@ body {
   border-radius: 15px;
   width: 17rem;
 }
+
+@keyframes AnswerAnimation {
+  0% {
+    width: 0;
+    opacity: 0;
+  }
+  10% {
+    width: 100%;
+    opacity: 1;
+  }
+  90% {
+    width: 100%;
+    opacity: 1;
+  }
+  100% {
+    width: 0;
+    opacity: 0;
+  }
+}
+
+.showAnswer {
+  opacity: 0;
+  width: 0;
+  padding: 8px;
+  background-color: #00b63a;
+  animation-name: AnswerAnimation;
+  animation-duration: 5s;
+}
+
 /* Customize scrollbar */
 ::-webkit-scrollbar {
   width: 4px; /* Largura da barra de rolagem */

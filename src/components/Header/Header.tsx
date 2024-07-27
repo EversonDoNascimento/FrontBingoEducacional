@@ -7,23 +7,27 @@ import IconLogoutActivated from "./../../../public/icons/logout-icon-activated.p
 import IconLogoutDeactivated from "./../../../public/icons//icon-logout-deactivated.png";
 import IconHomeActivated from "./../../../public/icons/icon-home.png";
 import IconHomeDeactivated from "./../../../public/icons/icon-home-deactivated.png";
+import Link from "next/link";
 const Header = () => {
   return (
     <>
       <header className="z-50 fixed w-screen py-2 lg:px-8 px-4 bg-[#1A1B1F] flex justify-between items-center top-0">
         <Image src={Logo} alt="Logo bingo" width={50}></Image>
         <ul className="flex gap-5">
-          <li className="text-[#F2CE4E] flex gap-2 items-center underline hover:scale-105 transition-all ease-linear duration-200 cursor-pointer">
-            <div>
-              <div className="border-2 border-[#F2CE4E] rounded-full w-6 h-6 flex justify-center items-center">
-                <div className="absolute">
-                  <div className="border-b-2 border-[#F2CE4E] w-3 relative"></div>
-                  <div className="border-b-2 border-[#F2CE4E] w-3 relative rotate-90 bottom-[1.5px]"></div>
+          <Link href={"/register_questions"}>
+            <li className="text-[#F2CE4E] flex gap-2 items-center underline hover:scale-105 transition-all ease-linear duration-200 cursor-pointer">
+              <div>
+                <div className="border-2 border-[#F2CE4E] rounded-full w-6 h-6 flex justify-center items-center">
+                  <div className="absolute">
+                    <div className="border-b-2 border-[#F2CE4E] w-3 relative"></div>
+                    <div className="border-b-2 border-[#F2CE4E] w-3 relative rotate-90 bottom-[1.5px]"></div>
+                  </div>
                 </div>
               </div>
-            </div>
-            Criar um jogo
-          </li>
+              Registrar Questões
+            </li>
+          </Link>
+
           <li className="flex justify-center items-center">
             <Menu
               data={[

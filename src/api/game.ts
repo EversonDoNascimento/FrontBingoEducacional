@@ -1,20 +1,22 @@
 import axios from "axios";
+import { api } from "./auth";
 
-export const api = axios.create({
-  baseURL: `${process.env.API_URL}`,
-  timeout: 10000,
-  headers: { "Content-Type": "application/json" },
-});
-
-export const login = async ({
-  email,
-  password,
-}: {
-  email: string;
-  password: string;
-}) => {
+export const createGame = async (
+  token: string,
+  question: number[],
+  name: string
+) => {
+  const headers = {
+    Authorization: `Bearer ${token}`,
+  };
   try {
-    const response = await api.post(`/login`, { email, password });
+    const response = await api.post(
+      `/game/createGame`,
+      { questions: question, name: name },
+      {
+        headers,
+      }
+    );
     return {
       data: response.data,
       status: response.status,
@@ -30,14 +32,16 @@ export const login = async ({
   }
 };
 
-export const verifyToken = async (token: string) => {
+export const getGameById = async (token: string, id: number) => {
   const headers = {
     Authorization: `Bearer ${token}`,
   };
   try {
-    const response = await api.get(`/game/myGames`, { headers });
+    const response = await api.get(`/game/${id}`, {
+      headers,
+    });
     return {
-      data: response.data,
+      data: response.data.data,
       status: response.status,
     };
   } catch (error) {
