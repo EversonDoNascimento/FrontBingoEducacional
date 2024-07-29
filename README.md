@@ -33,7 +33,11 @@ cd FrontBingoEducacional
 
 # Para cadastrar, ativar usuários e recuperar senha, será necessário utilizar um simulador de servidor SMTP.
 # Recomendamos o mailtrap.io. Faça o cadastro no site mailtrap.io para obter suas credenciais SMTP.
+```
 
+![Imagem mailtrap](./public/readme/mailtrap.png)
+
+```bash
 # As informações que você irá precisar são as seguintes:
 # host, port, user, pass
 
@@ -49,7 +53,7 @@ nano .env
 # Configure as variáveis USER_EMAIL, USER_PASS, EMAIL_HOST, EMAIL_PORT com as informações do seu servidor SMTP do mailtrap.io.
 # Preencha as variáveis com as informações de user, pass, host e port respectivamente.
 # A variável FROM_EMAIL pode ser configurada como bingoeducacional@gmail.com
-![Imagem mailtrap](./public/readme/mailtrap.png)
+
 
 # Salve as alterações no nano com "Ctrl + o", pressione Enter para confirmar e saia do editor com "Ctrl + x".
 
