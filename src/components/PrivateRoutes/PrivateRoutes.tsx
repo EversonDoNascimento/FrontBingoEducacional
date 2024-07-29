@@ -27,17 +27,31 @@ export default function PrivateRoutes({ children }: Props) {
           if (status === 200) {
             setAuth(true);
           } else {
-            setMessageError({ show: true, message: data.error }),
+            if (data.error == "Expired or invalid token") {
+              setMessageError({ show: true, message: "Sessão expirada" }),
+                setTimeout(
+                  () => setMessageError({ show: false, message: "" }),
+
+                  3000
+                );
               setTimeout(
-                () => setMessageError({ show: false, message: "" }),
+                () => router.push("/"),
 
                 3000
               );
-            setTimeout(
-              () => router.push("/"),
+            } else {
+              setMessageError({ show: true, message: data.error }),
+                setTimeout(
+                  () => setMessageError({ show: false, message: "" }),
 
-              3000
-            );
+                  3000
+                );
+              setTimeout(
+                () => router.push("/"),
+
+                3000
+              );
+            }
           }
         } else {
           setMessageError({ show: true, message: "Token não encontrado" }),

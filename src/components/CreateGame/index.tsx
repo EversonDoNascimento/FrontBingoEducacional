@@ -60,7 +60,6 @@ const CreateGame = () => {
               loadQuestions={questions}
               sendIdQuestions={(e) => {
                 setQuestions(e);
-                console.log(e);
               }}
               sendClose={() => {
                 setShowSelectQuestions(false);
@@ -80,7 +79,7 @@ const CreateGame = () => {
             ></StatusWindow>
           ) : null}
           <main className="flex justify-center items-center h-screen w-screen">
-            <div className="text-lg font-bold bg-[#1A1B1F] py-8 px-4 flex flex-col justify-center items-center gap-2">
+            <div className="text-lg font-bold bg-[#1A1B1F] py-8 px-4 flex flex-col justify-center items-center gap-5">
               <h1 className="py-4">Criar o jogo</h1>
               <label className="flex border-[1px] px-4 py-2 rounded-lg lg:w-96 w-80">
                 <input

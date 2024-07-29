@@ -52,7 +52,6 @@ const RegisterQuestions = () => {
     setValue("question", "");
     setValue("answer", "");
     setValue("category", "");
-    console.log(data.category);
   };
   useEffect(() => {
     if (questionsRegisted?.length !== 0) {

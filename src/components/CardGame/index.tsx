@@ -1,7 +1,7 @@
 import Image from "next/image";
 import BgCardGame from "./../../../public/icons/bg-cardGame.png";
 type Props = {
-  data: { title: string; categoria: string; id: number };
+  data: { name: string; id: number };
   sendId: (id: number) => void;
 };
 const CardGame = ({ data, sendId }: Props) => {
@@ -20,10 +20,7 @@ const CardGame = ({ data, sendId }: Props) => {
       ></Image>
       <div className="flex flex-col my-4 mx-2">
         <p className="text-sm w-40 text-nowrap overflow-hidden">
-          Nome: {data.title}
-        </p>
-        <p className="text-sm w-40  text-nowrap overflow-hidden">
-          Categoria: {data.categoria}
+          Nome: {data.name}
         </p>
       </div>
     </div>

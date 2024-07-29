@@ -31,7 +31,6 @@ const ConfigGame = () => {
   const handleSave = () => {
     setSavedValue(inputValue);
     // Você pode fazer outras ações com savedValue aqui, como enviar para um servidor, etc.
-    console.log("Valor salvo:", savedValue);
   };
 
   return (
