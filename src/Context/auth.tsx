@@ -36,6 +36,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     const { data, status } = await login({ email, password });
     if (status === 200) {
       localStorage.setItem("token", data.access_token);
+      localStorage.setItem("email", email);
       setMessageSuccess({
         show: true,
         message: "Login realizado com sucesso!",

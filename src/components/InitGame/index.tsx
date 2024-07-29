@@ -74,16 +74,16 @@ const InitGame = () => {
               error={true}
             ></StatusWindow>
           ) : null}
-          <main className="flex flex-col items-center lg:p-8 p-0  space-y-4 mt-11">
+          <main className="flex flex-col h-full items-center lg:p-8 px-2  space-y-4  my-20">
             <h1 className="text-2xl">Jogo</h1>
 
-            <div className="bg-[#1A1B1F] w-[400px] h-[370px] border rounded-lg border-transparent">
+            <div className="bg-[#1A1B1F] w-[300px] h-[300px] md:w-[400px] md:h-[370px] border rounded-lg border-transparent">
               <Image
                 src={CardGame}
                 alt="Ícone de jogo"
                 className="rounded-lg h-50 w-full"
               ></Image>
-              <div className="flex flex-col pl-3 pt-3 text-sm text-base">
+              <div className="flex flex-col pl-3 pt-3 text-sm">
                 <label>
                   Titulo: <span>{game?.name}</span>
                 </label>
@@ -102,12 +102,17 @@ const InitGame = () => {
               }}
               className="flex flex-col"
             >
-              <button className="mt-5 text-sm text-center rounded-lg px-[150px] py-3 bg-[#36A873] hover:scale-105 transition-all ease-linear duration-200">
+              <button className="mt-5 text-nowrap text-sm text-center rounded-lg px-[100px] md:px-[150px] py-3 bg-[#36A873] hover:scale-105 transition-all ease-linear duration-200 ">
                 INICIAR JOGO
               </button>
 
-              <button className="mt-5 text-sm  text-center rounded-lg px-[145px] py-3 bg-[#D41C2E] hover:scale-105 transition-all ease-linear duration-200">
-                EXCLUIR JOGO
+              <button
+                onClick={() => {
+                  router.back();
+                }}
+                className="mt-5 text-nowrap text-sm  text-center rounded-lg px-[100px] md:px-[150px] py-3 bg-[#D41C2E] hover:scale-105 transition-all ease-linear duration-200"
+              >
+                VOLTAR
               </button>
             </div>
           </main>

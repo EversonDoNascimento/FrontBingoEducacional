@@ -11,7 +11,7 @@ import Link from "next/link";
 const Header = () => {
   return (
     <>
-      <header className="z-50 fixed w-screen py-2 lg:px-8 px-4 bg-[#1A1B1F] flex justify-between items-center top-0">
+      <header className="z-[9999] fixed w-screen py-2 lg:px-8 px-4 bg-[#1A1B1F] flex justify-between items-center top-0">
         <Image src={Logo} alt="Logo bingo" width={50}></Image>
         <ul className="flex gap-5">
           <Link href={"/register_questions"}>

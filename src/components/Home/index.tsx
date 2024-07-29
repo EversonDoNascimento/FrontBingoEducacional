@@ -107,7 +107,7 @@ const Home = () => {
                           key={game.id}
                           data={{ name: game.name, id: game.id }}
                           sendId={(id: number) =>
-                            router.push(`/roulette?id_game=${game.id}`)
+                            router.push(`/init_game?id_game=${game.id}`)
                           }
                         ></CardGame>
                       );
