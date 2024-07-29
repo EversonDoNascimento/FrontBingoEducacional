@@ -8,7 +8,6 @@ Bingo Educacional é um projeto desenvolvido para a disciplina de Tópicos Avan�
 - [Instalação](#instalação)
 - [Uso](#uso)
 - [Funcionalidades](#funcionalidades)
-- [Contribuindo](#contribuindo)
 
 ## Sobre
 
@@ -65,3 +64,9 @@ npm run dev
 ## Uso
 
 ### Para usar o projeto após a instalação, abra http://localhost:3000 no seu navegador para ver o projeto em ação.
+
+## Funcionalidades
+
+- Jogo de bingo interativo para fins educacionais
+- Interface amigável e intuitiva
+- Adaptável conforme a disciplina que será utilizado
