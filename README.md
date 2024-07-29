@@ -49,6 +49,7 @@ nano .env
 # Configure as variáveis USER_EMAIL, USER_PASS, EMAIL_HOST, EMAIL_PORT com as informações do seu servidor SMTP do mailtrap.io.
 # Preencha as variáveis com as informações de user, pass, host e port respectivamente.
 # A variável FROM_EMAIL pode ser configurada como bingoeducacional@gmail.com
+![Imagem mailtrap](./public/readme/mailtrap.png)
 
 # Salve as alterações no nano com "Ctrl + o", pressione Enter para confirmar e saia do editor com "Ctrl + x".
 
