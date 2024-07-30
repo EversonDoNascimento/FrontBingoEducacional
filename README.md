@@ -14,7 +14,7 @@ Bingo Educacional é um projeto desenvolvido para a disciplina de Tópicos Avan�
 
 ## Sobre
 
-O Bingo Educacional é uma ferramenta interativa desenvolvida para auxiliar no processo de ensino-aprendizagem através de um jogo de bingo. Este projeto foi realizado como parte das disciplinas de Tópicos Avançados em IHC e Engenharia de Software Educacional, com o objetivo de aplicar conceitos teóricos na prática e promover a gamificação na educação. Devido à greve dos professores nos Institutos Federais do Brasil em 2024, houve mudanças significativas entre o protótipo inicial e o desenvolvimento final do projeto.
+O Bingo Educacional é uma ferramenta interativa desenvolvida para auxiliar no processo de ensino-aprendizagem através de um jogo de bingo. Este projeto foi realizado como parte das disciplinas de Tópicos Avançados em IHC e Engenharia de Software Educacional, com o objetivo de aplicar conceitos teóricos na prática e promover a gamificação na educação. **Devido à greve dos professores nos Institutos Federais do Brasil em 2024, houve mudanças significativas entre o protótipo inicial e o desenvolvimento final do projeto.**
 
 ## Tecnologias Utilizadas
 

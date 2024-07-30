@@ -132,6 +132,7 @@ const Roulette = () => {
     if (find) return find.answer;
     return "Sem resposta";
   };
+
   return (
     <>
       {loading ? (
@@ -235,7 +236,62 @@ const Roulette = () => {
                   </button>
                 </div>
               </>
-            ) : null}
+            ) : (
+              <>
+                <div className="flex flex-col justify-start w-[80%] h-40  mt-32 ">
+                  <div className="bg-[#F2CE4E] text-black text-sm  w-56 h-9 flex justify-center items-center gap-2 rounded-t-md">
+                    {showAnswer ? null : (
+                      <Image
+                        src={IconQuestion}
+                        alt="Ícone da questão"
+                        width={25}
+                        height={25}
+                      ></Image>
+                    )}
+
+                    <span className="font-bold">
+                      {showAnswer ? "Resposta:" : "Pergunta Selecionada:"}
+                    </span>
+                  </div>
+                  {showAnswer ? (
+                    <div className="w-full py-4 text-sm bg-green-600 rounded-b-md showAnswer text-wrap max-h-20 overflow-y-auto">
+                      {renderAnswer(selectedItem)}
+                    </div>
+                  ) : (
+                    <div className="w-full py-4 bg-[#1A1B1F] rounded-b-md">
+                      {selectedItem !== "" ? (
+                        <div className="transition-all ease-linear duration-200 relative opacity-0 hover:opacity-100">
+                          <button
+                            onClick={() => {
+                              setTimeout(() => setShowAnswer(true), 100);
+                              setTimeout(() => setShowAnswer(false), 5000);
+                            }}
+                            className="absolute text-sm rounded-md right-4 top-0 p-1 bg-blue-700"
+                          >
+                            Ver resposta
+                          </button>
+                        </div>
+                      ) : null}
+
+                      <p className="text-wrap max-h-20 overflow-y-auto px-4 text-sm">
+                        {selectedItem === ""
+                          ? "Gire a roleta!"
+                          : renderQuestion(selectedItem)}
+                      </p>
+                    </div>
+                  )}
+                </div>
+                <div className="flex flex-col justify-center items-center w-full  gap-2">
+                  <p className="text-white font-bold ">O jogo terminou!</p>
+                  <button
+                    onClick={() => router.push("/home")}
+                    className="bg-blue-700 scale-105 px-2 py-1 text-white transition-all ease-linear duration-200 rounded-md"
+                  >
+                    Voltar para a tela inicial
+                  </button>
+                </div>
+              </>
+            )}
           </main>
         </>
       )}
