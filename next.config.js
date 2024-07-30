@@ -1,5 +1,17 @@
 // next.config.js
+const webpack = require("webpack");
+
 module.exports = {
+  webpack: (config, { isServer }) => {
+    config.plugins.push(
+      new webpack.IgnorePlugin({
+        resourceRegExp: /useSearchParams/,
+        contextRegExp: /node_modules/,
+      })
+    );
+
+    return config;
+  },
   reactStrictMode: false,
   experimental: {
     missingSuspenseWithCSRBailout: false,

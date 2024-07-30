@@ -74,16 +74,18 @@ const Roulette = () => {
   };
 
   useEffect(() => {
-    if (id_game) {
-      handleGame();
-    } else {
-      setMessageError({ show: true, message: "Erro ao buscar questão" });
-      setTimeout(() => {
-        setMessageError({ show: false, message: "" });
-      }, 3000);
-      setTimeout(() => {
-        router.push("/home");
-      }, 3000);
+    if (typeof window !== "undefined") {
+      if (id_game) {
+        handleGame();
+      } else {
+        setMessageError({ show: true, message: "Erro ao buscar questão" });
+        setTimeout(() => {
+          setMessageError({ show: false, message: "" });
+        }, 3000);
+        setTimeout(() => {
+          router.push("/home");
+        }, 3000);
+      }
     }
   }, []);
   useEffect(() => {
