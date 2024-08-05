@@ -51,7 +51,7 @@ const RegisterQuestions = () => {
 
     setValue("question", "");
     setValue("answer", "");
-    setValue("category", "");
+    setValue("category", "Selecione uma categoria");
   };
   useEffect(() => {
     if (questionsRegisted?.length !== 0) {
@@ -227,7 +227,7 @@ const RegisterQuestions = () => {
                       >
                         <option
                           className="bg-[#1A1B1F]"
-                          value={""}
+                          value={"default"}
                           selected
                           disabled
                         >
